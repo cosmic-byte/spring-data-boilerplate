@@ -1,11 +1,11 @@
 # Spring-Data-BoilerPlate
-A boiler plate for combining multiple spring data repository.
+A boiler plate for combining multiple spring data repositories.
 
 In this project, Spring data JPA is combined with Spring data Elasticsearch
 
 #### SETUP ######
 
-# JPA database configuration
+###### JPA database configuration
 
     POSTGRES DB setup
 
@@ -18,7 +18,7 @@ In this project, Spring data JPA is combined with Spring data Elasticsearch
     5. password is "enter new password"
     6. GRANT ALL PRIVILEGES ON DATABASE 'database_name' to 'role_name';
 
-# Elastic server installation and configuration.
+###### Elastic server installation and configuration.
 
     for linux(ubuntu) run the following commands on the terminal
 
@@ -34,18 +34,18 @@ In this project, Spring data JPA is combined with Spring data Elasticsearch
 
     5. sudo systemctl start elasticsearch
 
-   # for more information for installing and configuring elastic server checkout the following link
-   https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-16-04
+   #####for more information for installing and configuring elastic server checkout the following link
+   [https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-16-04](How to install and configure elasticSearch on Ubuntu)
 
 
- # Edit application.properties file
+###### Edit application.properties file
     edit the following lines with your personal details
 
     spring.datasource.url=jdbc:postgresql://Localhost:5432/Your_database_name
     spring.datasource.username=Your_database_username
     spring.datasource.password=Your_database_password
 
- # Edit ElasticSearchConfig.java file
+###### Edit ElasticSearchConfig.java file
     edit the following lines with your personal details
 
     .....
