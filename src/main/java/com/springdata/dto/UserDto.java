@@ -8,9 +8,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
-@Document(indexName = "coderank-index", type = "user")
+@Document(indexName = "your-index", type = "user")
 public class UserDto {
-
 
     @Id
     private Long id;

@@ -2,21 +2,15 @@ package com.springdata.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.Email;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 @Entity
 @Table(name="users")
-public class User implements UserDetails{
+public class User {
     @Transient
     private LocalDateTime now = LocalDateTime.now();
 
@@ -53,8 +47,8 @@ public class User implements UserDetails{
     }
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="id", unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true)
     public Long getId() {
         return id;
     }
@@ -64,7 +58,7 @@ public class User implements UserDetails{
     }
 
     @NotNull
-    @Size(min=2, max=30, message="The length of firstname should be within the range of 2 to 30.")
+    @Size(min = 2, max = 30, message = "The length of firstname should be within the range of 2 to 30.")
     @Column(name = "firstname")
     public String getFirstname() {
         return firstname;
@@ -75,7 +69,7 @@ public class User implements UserDetails{
     }
 
     @NotNull
-    @Size(min=2, max=30, message="The length lastname should be within the range of 2 to 30.")
+    @Size(min = 2, max = 30, message = "The length lastname should be within the range of 2 to 30.")
     @Column(name = "lastname")
     public String getLastname() {
         return lastname;
@@ -86,7 +80,7 @@ public class User implements UserDetails{
     }
 
     @NotNull
-    @Size(min=2, max=100, message="The length of password should be within the range of 2 to 30.")
+    @Size(min = 2, max = 100, message = "The length of password should be within the range of 2 to 30.")
     @Column(name = "password")
     public String getPassword() {
         return password;
@@ -107,7 +101,7 @@ public class User implements UserDetails{
     }
 
     @ManyToOne
-    @JoinColumn(name="role_id")
+    @JoinColumn(name = "role_id")
     public Role getRole() {
         return role;
     }
@@ -172,46 +166,5 @@ public class User implements UserDetails{
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
 
-    }
-
-    @Override
-    @JsonIgnore
-    @Transient
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        Role role = getRole();
-        if (role != null) {
-            String roleName = "ROLE_" + role.getName();
-            authorities.add(new SimpleGrantedAuthority(roleName));
-        }
-        return authorities;
-    }
-
-    @Override
-    @JsonIgnore
-    @Transient
-    public String getUsername() {
-        return email;
-    }
-
-    @Override
-    @JsonIgnore
-    @Transient
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    @JsonIgnore
-    @Transient
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    @JsonIgnore
-    @Transient
-    public boolean isCredentialsNonExpired() {
-        return true;
     }
 }
