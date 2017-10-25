@@ -34,8 +34,8 @@ In this project, Spring data JPA is combined with Spring data Elasticsearch
 
     5. sudo systemctl start elasticsearch
 
-   #####for more information for installing and configuring elastic server checkout the following link
-   [https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-16-04](How to install and configure elasticSearch on Ubuntu)
+###### for more information for installing and configuring elastic server checkout the following link
+   [How to install and configure elasticSearch on Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-16-04)
 
 
 ###### Edit application.properties file
